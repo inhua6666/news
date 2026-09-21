@@ -10,13 +10,13 @@ import os
 # Server酱配置 - 从环境变量获取
 SEND_KEY = os.environ.get("SEND_KEY", "")
 
-# 世界# 世界热点 / 国际局势（中文源）
+# 世界热点 / 国际局势（中文源）
 RSS_SOURCES = [
-    {"name": "BBC中文", "url": "https://www.bbc.com/zhongwen/simp/rss.xml"},
-    {"name": "新华社国际", "url": "http://www.news.cn/world/news_world.xml"},
-    {"name": "环球网", "url": "https://www.huanqiu.com/rss"},
-    {"name": "观察者网", "url": "https://www.guancha.cn/rss"},
-    {"name": "参考消息", "url": "https://www.cankaoxiaoxi.com/rss"},
+    {"name": "BBC中文", "url": "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"},
+    {"name": "联合早报", "url": "https://www.zaobao.com.sg/realtime/world/rss"},
+    {"name": "德国之声", "url": "https://rss.dw.com/xml/rss-chi-all"},
+    {"name": "法广", "url": "https://www.rfi.fr/cn/rss"},
+    {"name": "纽约时报中文", "url": "https://cn.nytimes.com/rss/"},
 ]
 def get_rss_news(source, hours=24):
     """抓取RSS源过去24小时的新闻"""
