@@ -10,18 +10,14 @@ import os
 # Server酱配置 - 从环境变量获取
 SEND_KEY = os.environ.get("SEND_KEY", "")
 
-if not SEND_KEY:
-    print("错误: 请设置SEND_KEY环境变量")
-    exit(1)
-
-# 科技资讯RSS源
+# 世界热点 / 国际局势 RSS源
 RSS_SOURCES = [
-    {"name": "36氪", "url": "https://www.36kr.com/feed/"},
-    {"name": "虎嗅网", "url": "https://www.huxiu.com/rss.xml"},
-    {"name": "爱范儿", "url": "https://www.ifanr.com/feed/"},
-    {"name": "TechCrunch", "url": "https://techcrunch.com/feed/"},
+    {"name": "BBC中文", "url": "https://www.bbc.com/zhongwen/simp/rss.xml"},
+    {"name": "新华社", "url": "http://www.xinhuanet.com/politics/news_politics.xml"},
+    {"name": "环球时报", "url": "https://www.huanqiu.com/rss"},
+    {"name": "Reuters世界", "url": "https://www.reutersagency.com/feed/?taxonomy=best-topics&post_type=best"},
+    {"name": "Al Jazeera", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
 ]
-
 def get_rss_news(source, hours=24):
     """抓取RSS源过去24小时的新闻"""
     news_list = []
@@ -77,7 +73,7 @@ def send_to_wechat(title, desp):
         return False
 
 def main():
-    print("开始抓取科技资讯...")
+    print("开始抓取世界热点资讯...")
     all_news = []
 
     for source in RSS_SOURCES:
@@ -91,9 +87,9 @@ def main():
         print("未获取到最新资讯")
         return
 
-    title = f"科技资讯 {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+    title = f"世界热点 {datetime.now().strftime('%Y-%m-%d %H:%M')}"
 
-    desp_lines = ["## 今日科技资讯\n"]
+    desp_lines = ["## 今日世界热点\n"]
     current_source = None
 
     for news in all_news[:20]:
